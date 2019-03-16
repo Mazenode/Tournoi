@@ -28,4 +28,8 @@ public int getAge() {
 public String getNationnalite(String nationnalite) {
         return nationnalite;
         }
+
+public String toString() {
+        return "Nom: "+ nom +"; Prénom: "+ prenom +"; Age: "+ age + "; Nationnalité: "+nationnalite;
+}
 }
