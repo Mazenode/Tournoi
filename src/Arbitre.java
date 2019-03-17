@@ -5,8 +5,8 @@ public class Arbitre extends Personne{
     public String getPosition(String position) {
         return position;
     }
-    
+
     public String getnum_match(int num_match) {
-        return position;
+        return num_match;
     }
 }
