@@ -8,5 +8,6 @@ public class Arbitre extends Personne{
 
     public String getnum_match(int num_match) {
         return num_match;
+        System.out.println("salut");
     }
 }
