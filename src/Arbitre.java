@@ -11,7 +11,7 @@ public class Arbitre extends Personne{
         return position;
     }
 
-    public String getnum_match(int num_match) {
+    public int getnum_match(int num_match) {
         return num_match;
 
     }
