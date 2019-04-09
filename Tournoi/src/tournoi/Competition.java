@@ -1,12 +1,11 @@
 package tournoi;
 
 //import java.util.Vector;
-import java.util.Scanner;
 
 public class Competition {
 
   public String nom;
-  public String equipe;
+  public String [] equipe = new String[100];
   public int nbEquipes;
   public String lieu;
 
@@ -17,7 +16,6 @@ public class Competition {
   public Competition(){
       System.out.println("Création d'une compétition");
       nom = "Inconnu";
-      equipe = "Inconnu";
       nbEquipes = 0;
       lieu = "Inconnu";
   }
@@ -25,8 +23,26 @@ public class Competition {
   public void setNomCompetition(String pNom) {
        nom = pNom;
   }
+  public void setNomEquipe(String pEquipe, int i) {
+       equipe[i] = pEquipe;
+  }
+  public void setNbEquipes(int pNbEquipes) {
+       nbEquipes = pNbEquipes;
+  }
+  public void setLieu(String pLieu) {
+       lieu = pLieu;
+  }
 
   public String getNomCompetition() {
       return nom;
+  }
+  public String getNomEquipe(int i) {
+      return equipe[i];
+  }
+  public int getNbEquipes() {
+       return nbEquipes;
+  }
+  public String getLieu() {
+       return lieu;
   }
 }
