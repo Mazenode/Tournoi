@@ -2,7 +2,7 @@ package tournoi;
 
 //import java.util.Vector;
 
-public class Entrainneur extends Personne {
+public class Entrainneur /*extends Personne */{
 
   public String equipe;
 

@@ -5,7 +5,7 @@ package tournoi;
 public class Competition {
 
   public String nom;
-  public String [] equipe = new String[100];
+  public String equipe;
   public int nbEquipes;
   public String lieu;
 
@@ -23,8 +23,8 @@ public class Competition {
   public void setNomCompetition(String pNom) {
        nom = pNom;
   }
-  public void setNomEquipe(String pEquipe, int i) {
-       equipe[i] = pEquipe;
+  public void setNomEquipe(String pEquipe) {
+       equipe = pEquipe;
   }
   public void setNbEquipes(int pNbEquipes) {
        nbEquipes = pNbEquipes;
@@ -36,8 +36,8 @@ public class Competition {
   public String getNomCompetition() {
       return nom;
   }
-  public String getNomEquipe(int i) {
-      return equipe[i];
+  public String getNomEquipe() {
+      return equipe;
   }
   public int getNbEquipes() {
        return nbEquipes;
@@ -45,4 +45,13 @@ public class Competition {
   public String getLieu() {
        return lieu;
   }
+  
+  @Override
+  public String toString() {
+        return ("Votre compétition se nomme \""+ this.getNomCompetition()+"\"."+
+                    ", Nom de l'équipe : "+ this.getNomEquipe() +
+                    ", nb d'équipes : "+ this.getNbEquipes() +
+                    ", Lieu : " + this.getLieu()) +
+                    ".";
+   }
 }

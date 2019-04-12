@@ -2,7 +2,7 @@ package tournoi;
 
 //import java.util.Vector;
 
-public class Arbitre extends Personne {
+public class Arbitre /*extends Personne */{
 
   public int numMatch;
   public String position;
