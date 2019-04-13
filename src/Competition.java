@@ -1,20 +1,58 @@
-public class Competition extends Equipe{
-    private String nom_compet;
-    private int nbr_eq;
-    private String lieu;
+package tournoi;
 
-    public Competition(String vnom_compet, int vnbr_eq, String vlieu){
-      vnom_compet = nom_compet;
-      vnbr_eq = nbr_eq;
-      vlieu = lieu;
-    }
-    public String getnom_compet(){
-      return(nom_compet);
-    }
-    public int getnbr_eq(){
-      return(nbr_eq);
-    }
-    public String getlieu(){
-      return(lieu);
-    }
+//import java.util.Vector;
+
+public class Competition extends Equipe{
+
+  public String nom;
+  public String equipe;
+  public int nbEquipes;
+  public String lieu;
+
+  /*
+  public Vector  myEquipe;
+  public Vector  composition;
+  */
+  
+  public Competition(){
+      System.out.println("Création d'une compétition");
+      nom = "Inconnu";
+      nbEquipes = 0;
+      lieu = "Inconnu";
+  }
+
+  public void setNomCompetition(String pNom) {
+       nom = pNom;
+  }
+  public void setNomEquipe(String pEquipe) {
+       equipe = pEquipe;
+  }
+  public void setNbEquipes(int pNbEquipes) {
+       nbEquipes = pNbEquipes;
+  }
+  public void setLieu(String pLieu) {
+       lieu = pLieu;
+  }
+
+  public String getNomCompetition() {
+      return nom;
+  }
+  public String getNomEquipe() {
+      return equipe;
+  }
+  public int getNbEquipes() {
+       return nbEquipes;
+  }
+  public String getLieu() {
+       return lieu;
+  }
+  
+  @Override
+  public String toString() {
+        return ("Votre compétition se nomme \""+ this.getNomCompetition()+"\"."+
+                    ", Nom de l'équipe : "+ this.getNomEquipe() +
+                    ", nb d'équipes : "+ this.getNbEquipes() +
+                    ", Lieu : " + this.getLieu()) +
+                    ".";
+   }
 }

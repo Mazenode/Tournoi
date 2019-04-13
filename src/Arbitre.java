@@ -1,18 +1,19 @@
-public class Arbitre extends Personne{
-    private int num_match;
-    private String position;
+package tournoi;
 
-    public Arbitre(int vnum_match, String vposition){
-      num_match = vnum_match;
-      position = vposition;
-    }
+//import java.util.Vector;
 
-    public String getPosition(String position) {
-        return position;
-    }
+public class Arbitre /*extends Personne */{
 
-    public String getnum_match(int num_match) {
-        return num_match;
+  public int numMatch;
+  public String position;
+  public String carton;
 
-    }
+  //  public Vector  myMatch;
+
+  public void setArbitre() {
+  }
+
+  public void getArbitre() {
+  }
+
 }

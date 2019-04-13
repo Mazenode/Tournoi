@@ -1,35 +1,17 @@
+package tournoi;
+
 public class Personne {
-    private String nom;
-    private String prenom;
-    private int age;
-    private String nationnalite;
 
-    public Personne(){}
+  public String nom;
+  public String prenom;
+  public int age;
+  public String nationnalite;
 
-    public Personne(String nom, String prenom, int age, String nationnalite){
-        this.nom = nom;
-        this.prenom = prenom;
-        this.age = age;
-        this.nationnalite = nationnalite;
-        }
-
-public String getNom() {
-        return nom;
-        }
-
-public String getPrenom() {
-        return prenom;
-        }
-
-public int getAge() {
-        return age;
-        }
-
-public String getNationnalite(String nationnalite) {
-        return nationnalite;
-        }
-
-public String toString() {
-        return "Nom: "+ nom +"; Prénom: "+ prenom +"; Age: "+ age + "; Nationnalité: "+nationnalite;
+  public Personne(String n, String p, int a, String nat){
+      this.nom = n;
+      this.prenom = p;
+      this.age = a;
+      this.nationnalite = nat;
+  }
 }
-}
+

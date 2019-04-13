@@ -1,17 +1,24 @@
-public class Joueur extends Personne{
-    private int num;
-    private String[] poste = new String[4];
-    private String equipe;
-    private int stat;
+package tournoi;
 
-    public void getPoste(){
-        poste[0] = "Gardien";
-        poste[1] = "Défenseur";
-        poste[2] = "Milieu";
-        poste[3] = "Attaquant";
-    }
+//import java.util.Vector;
 
-    public String setPoste(int i) {
-        return this.poste[i];
-    }
+public class Joueur extends Personne {
+
+  public int numJoueur;
+  public String equipe;
+
+  /**public Vector  concerne;
+  public Vector  myContratE;
+  public Vector  signe;*/
+  
+  public Joueur(String n, String p, int a, String nat, int num, String e){
+      super(n,p,a,nat);
+      this.numJoueur = num;
+      this.equipe = e;
+  }
+
+  public void getJoueur() {
+      
+  }
+
 }
