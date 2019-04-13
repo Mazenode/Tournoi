@@ -10,50 +10,70 @@ public class Tournoi {
         ArrayList listeCompet = new ArrayList(); 
         Scanner sc = new Scanner(System.in);
         
-        typePersonne(listeJoueur, listeArbitre, listeEntrainneur, sc);
+        creerPersonne(listeJoueur, listeArbitre, listeEntrainneur, sc);
                       
         /*creerCompetition(listeCompet, sc);
         System.out.println(listeCompet);*/
     }   
     
-    public static void typePersonne(ArrayList listeJ, ArrayList listeA, ArrayList listeE, Scanner sc) {
-        String buf;
-        int nbEquipes;
+    public static void creerPersonne(ArrayList listeJ, ArrayList listeA, ArrayList listeE, Scanner sc){
+        String nom, prenom, nationnalite, buf;
+        int age, bufInt;
+        System.out.println("Entrez le nom :");
+        buf = sc.nextLine();
+        nom = buf;
+        
+        System.out.println("Entrez le prénom :");
+        buf = sc.nextLine();
+        prenom = buf;
+        
+        System.out.println("Entrez l'âge :");
+        bufInt = sc.nextInt();
+        age = bufInt;
+        
+        System.out.println("Entrez la nationnalité :");
+        buf = sc.nextLine();
+        nationnalite = buf;      
+        
+        int choix;
         System.out.println("Choisissez le poste du participant : ");
         System.out.println("1. Joueur");
         System.out.println("2. Arbitre");
         System.out.println("3. Entraînneur");
-        nbEquipes = sc.nextInt();
-        switch (nbEquipes){
+        choix = sc.nextInt();
+        switch (choix){
             case 1:
-                creerJoueur(listeJ, sc);
+                System.out.println("On va créer un joueur !");
+                creerJoueur(nom, prenom, age, nationnalite, listeJ, sc);
             break;
             case 2:
-                creerArbitre(listeA, sc);
+                System.out.println("On va créer un arbitre !");
+                creerArbitre(nom, prenom, age, nationnalite, listeA, sc);
             break;
             case 3:
-                creerEntrainneur(listeE, sc);
+                System.out.println("On va créer un Entrainneur !");               
+                creerEntrainneur(nom, prenom, age, nationnalite, listeE, sc);
             break;
-        }                                   
+        }                       
     }
     
-    public static void creerPersonne(ArrayList liste, Scanner sc){
+    public static void creerJoueur(String nom, String prenom, int age, String nationnalite, ArrayList liste, Scanner sc) {
+        int choix;
+        System.out.println("Choisissez le poste du joueur : ");
+        System.out.println("1. Attaquant");
+        System.out.println("2. Défenseur");
+        System.out.println("3. Gardien");
+        choix = sc.nextInt();
+                     
+        Joueur joueur = new Joueur(nom, prenom, age, nationnalite, choix);
+    }
+    
+    public static void creerArbitre(String nom, String prenom, int age, String nationnalite, ArrayList liste, Scanner sc) {
         
     }
     
-    public static void creerJoueur(ArrayList liste, Scanner sc) {
-        System.out.println("On va créer un joueur !");
-        creerPersonne(liste, sc);
-    }
-    
-    public static void creerArbitre(ArrayList liste, Scanner sc) {
-        System.out.println("On va créer un arbitre !");
-        creerPersonne(liste, sc);
-    }
-    
-    public static void creerEntrainneur(ArrayList liste, Scanner sc) {
-        System.out.println("On va créer un Entrainneur !");
-        creerPersonne(liste, sc);
+    public static void creerEntrainneur(String nom, String prenom, int age, String nationnalite, ArrayList liste, Scanner sc) {
+        
     }
     
     public static void creerCompetition(ArrayList liste, Scanner sc){
