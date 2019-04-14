@@ -11,6 +11,7 @@ public class Tournoi {
         Scanner sc = new Scanner(System.in);
         
         creerPersonne(listeJoueur, listeArbitre, listeEntrainneur, sc);
+        System.out.println(listeJoueur);
                       
         /*creerCompetition(listeCompet, sc);
         System.out.println(listeCompet);*/
@@ -32,7 +33,7 @@ public class Tournoi {
         age = bufInt;
         
         System.out.println("Entrez la nationnalité :");
-        buf = sc.nextLine();
+        buf = sc.next();
         nationnalite = buf;      
         
         int choix;
@@ -57,7 +58,7 @@ public class Tournoi {
         }                       
     }
     
-    public static void creerJoueur(String nom, String prenom, int age, String nationnalite, ArrayList liste, Scanner sc) {
+    public static void creerJoueur(String nom, String prenom, int age, String nationnalite, ArrayList listeJ, Scanner sc) {
         int choix;
         System.out.println("Choisissez le poste du joueur : ");
         System.out.println("1. Attaquant");
@@ -66,6 +67,7 @@ public class Tournoi {
         choix = sc.nextInt();
                      
         Joueur joueur = new Joueur(nom, prenom, age, nationnalite, choix);
+        listeJ.add(joueur);
     }
     
     public static void creerArbitre(String nom, String prenom, int age, String nationnalite, ArrayList liste, Scanner sc) {
