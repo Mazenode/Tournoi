@@ -2,22 +2,24 @@ package tournoi;
 
 import java.util.*;
 
+import sun.net.www.content.text.plain;
+
 public class Tournoi {
-    public static void main(String[] args) { 
+    public static void main(String[] args) {
         ArrayList listeJoueur = new ArrayList();
-        ArrayList listeArbitre = new ArrayList();  
+        ArrayList listeArbitre = new ArrayList();
         ArrayList listeEntrainneur = new ArrayList();
-        ArrayList listeCompet = new ArrayList(); 
-        ArrayList listeMatch = new ArrayList(); 
+        ArrayList listeCompet = new ArrayList();
+        ArrayList listeMatch = new ArrayList();
         ArrayList listeEquipe = new ArrayList();
         int choix = 0;
         Scanner sc = new Scanner(System.in);
-        
+
         afficherTitre();
-        
+
         while (choix != 6) {
             afficherMenu();
-            choix = sc.nextInt(); 
+            choix = sc.nextInt();
             switch (choix) {
                 case 1:
                     creerCompetition(listeCompet, sc);
@@ -36,35 +38,36 @@ public class Tournoi {
                 break;
             }
         }
-        
+
         System.exit(0);
-    }   
-    
+    }
+
     public static void creerPersonne(ArrayList listeJ, ArrayList listeA, ArrayList listeE, Scanner sc){
         String nom, prenom, nationnalite, buf;
         int age, bufInt;
         System.out.println("Entrez le nom :");
         buf = sc.next();
         nom = buf;
-        
+
         System.out.println("Entrez le prénom :");
         buf = sc.next();
         prenom = buf;
-        
+
         System.out.println("Entrez l'âge :");
         bufInt = sc.nextInt();
         age = bufInt;
-        
+
         System.out.println("Entrez la nationnalité :");
         buf = sc.next();
-        nationnalite = buf;      
-        
+        nationnalite = buf;
+
         int choix;
         System.out.println("Choisissez le poste du participant : ");
         System.out.println("1. Joueur");
         System.out.println("2. Arbitre");
         System.out.println("3. Entraînneur");
         choix = sc.nextInt();
+
         switch (choix){
             case 1:
                 System.out.println("On va créer un joueur !");
@@ -75,12 +78,12 @@ public class Tournoi {
                 creerArbitre(nom, prenom, age, nationnalite, listeA, sc);
             break;
             case 3:
-                System.out.println("On va créer un Entrainneur !");               
+                System.out.println("On va créer un Entrainneur !");
                 creerEntrainneur(nom, prenom, age, nationnalite, listeE, sc);
             break;
-        }                       
+        }
     }
-    
+
     public static void creerJoueur(String nom, String prenom, int age, String nationnalite, ArrayList listeJ, Scanner sc) {
         int choix;
         System.out.println("Choisissez le poste du joueur : ");
@@ -88,11 +91,11 @@ public class Tournoi {
         System.out.println("2. Défenseur");
         System.out.println("3. Gardien");
         choix = sc.nextInt();
-                     
+
         Joueur joueur = new Joueur(nom, prenom, age, nationnalite, choix);
         listeJ.add(joueur);
     }
-    
+
     public static void creerArbitre(String nom, String prenom, int age, String nationnalite, ArrayList listeA, Scanner sc) {
         int choix;
         System.out.println("Choisissez le poste de l'arbitre : ");
@@ -100,51 +103,69 @@ public class Tournoi {
         System.out.println("2. Arbitre de touche");
         System.out.println("3. Arbitre assistant");
         choix = sc.nextInt();
-                     
+
         Arbitre arbitre = new Arbitre(nom, prenom, age, nationnalite, choix);
         listeA.add(arbitre);
     }
-    
+
     public static void creerEntrainneur(String nom, String prenom, int age, String nationnalite, ArrayList liste, Scanner sc) {
-        
+
     }
-    
+    public static void creerEquipe(String joueur, String entrainneur, int numEquipe, String nomEquipe, String ville, String pays, int tactique, ArrayList listeE,Scanner sc){
+        System.out.println("1.Choisir le joueur que vous vouler ajouter a votre equipe");
+        System.out.println("2.Cree un joueur et l'ajouté a l'equipe");
+        choix = sc.nextInt();
+
+        switch (choix){
+            case 1:
+            System.out.println("lol je sais pas");
+            case 2:
+            System.out.println("vous avez choisis 2");
+            creerJoueur(nom, prenom, age, nationnalite, listeJ, sc);
+            default:
+            creerJoueur(nom, prenom, age, nationnalite, listeJ, sc);
+        }
+
+        Equipe equipe = new Equipe(joueur, entrainneur, numEquipe, nomEquipe, ville, pays, tactique);
+        listeE.add(equipe);
+    }
+
     public static void creerCompetition(ArrayList liste, Scanner sc){
         Competition competition = new Competition();
-        liste.add(competition);        
+        liste.add(competition);
         String buf;
         int nbEquipes;
-        
+
         System.out.println("Entrez le nom de le compétition :");
         buf = sc.next();
-        competition.setNomCompetition(buf);      
-        
+        competition.setNomCompetition(buf);
+
         System.out.println("Entrez le nombre d'équipes participantes à la compétition :");
         nbEquipes = sc.nextInt();
-        competition.setNbEquipes(nbEquipes);        
-        
+        competition.setNbEquipes(nbEquipes);
+
         for (int i = 1; i < nbEquipes+1; i++) {
             System.out.println("Entrez le nom de l'équipe " +i+" :");
             buf = sc.next();
-            competition.setNomEquipe(buf);             
+            competition.setNomEquipe(buf);
         }
-        
+
         System.out.println("Entrez le lieu de déroulement de la compétition: ");
         buf = sc.next();
         competition.setLieu(buf);
-        
+
         //Récapitulatif des entrées
         /*System.out.println("Votre compétition se nomme \""+ competition.getNomCompetition()+"\".");
         System.out.println("Elle est composée de "+ competition.getNbEquipes()+" équipes, les voici :");
         for (int i = 1; i < nbEquipes+1; i++) {
-            System.out.print(competition.getNomEquipe());      
+            System.out.print(competition.getNomEquipe());
             System.out.print("    ");
         }
         System.out.println(".");
         System.out.println("La compétition se déroulera à "+competition.getLieu()+".");
-        */                          
+        */
     }
-    
+
     public static void afficherTitre() {
         System.out.println("  ______                             _        __        ____            __ \n" +
 " /_  __/___  __  ___________  ____  (_)  ____/ /__     / __/___  ____  / /_\n" +
@@ -152,9 +173,9 @@ public class Tournoi {
 " / / / /_/ / /_/ / /  / / / / /_/ / /  / /_/ /  __/  / __/ /_/ / /_/ / /_  \n" +
 "/_/  \\____/\\__,_/_/  /_/ /_/\\____/_/   \\__,_/\\___/  /_/  \\____/\\____/\\__/  \n" +
 "                                                                           ");
-        
+
     }
-    
+
     public static void afficherMenu() {
         System.out.println(" ");
         System.out.println("Bienvenue !");
@@ -166,10 +187,10 @@ public class Tournoi {
         System.out.println("5. Afficher...");
         System.out.println("6. Quitter");
     }
-    
-    
+
+
     public static void choixAffichage(ArrayList listeCompetition, ArrayList listeJoueur, ArrayList listeArbitre, ArrayList listeEntrainneur, ArrayList listeEquipe,  ArrayList listeMatch, Scanner sc) {
-        
+
         System.out.println("1. Afficher les compétitons");
         System.out.println("2. Afficher les joueurs");
         System.out.println("3. Afficher les arbitres");
@@ -177,7 +198,7 @@ public class Tournoi {
         System.out.println("5. Afficher les équipes");
         System.out.println("6. Afficher les matchs");
         int choix = sc.nextInt();
-        
+
         switch (choix) {
             case 1 :
                 System.out.println(listeCompetition);
