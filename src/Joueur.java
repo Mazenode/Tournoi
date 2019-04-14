@@ -20,9 +20,13 @@ public class Joueur extends Personne {
 
   @Override
   public String toString() {
-        return ("Votre joueur se nomme : "+ this.nom + " "+ this.prenom +". "+
-                    "Il a : "+ this.age + "ans."+
-                    " Il est de nationnalité : " + this.nationnalite + " et il joue au poste de " +
+        return ("Nom et prénom: "+ this.nom + " "+ this.prenom +". "+
+                    "Age : "+ this.age +
+                    " Nationnalité : " + this.nationnalite + " et il joue au poste de " +
                     this.poste[chx] + ".");
    }
+  
+  public String getNom(){
+      return this.nom;
+  }
 }
