@@ -2,7 +2,7 @@ package tournoi;
 
 //import java.util.Vector;
 
-public class Competition extends Equipe{
+public class Competition {
 
   public String nom;
   public String equipe;
@@ -14,12 +14,6 @@ public class Competition extends Equipe{
   public Vector  composition;
   */
   
-  public Competition(){
-      System.out.println("Création d'une compétition");
-      nom = "Inconnu";
-      nbEquipes = 0;
-      lieu = "Inconnu";
-  }
 
   public void setNomCompetition(String pNom) {
        nom = pNom;
