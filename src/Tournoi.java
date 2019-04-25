@@ -1,6 +1,5 @@
 package tournoi;
 
-package tournoi;
 
 import java.util.*;
 
@@ -127,11 +126,43 @@ public class Tournoi {
         listeE.add(entrainneur);
     }
 
-    public static vooid creerMatch(ArrayList listE, ArrayList listA , ArrayList ListM){
+    public static ArrayList<Equipe> creerMatch(ArrayList listE, ArrayList listA , ArrayList ListM, Scanner sc){
         ArrayList listeEquipeSelec = new ArrayList();
-        String buf, nomStade;
+        String nomStade;
         int bufInt;
-        System.out.println("Quelle est le score de l'equipe"+equipe1+" ?");
+        System.out.println("On vas cree un match pour cela il nous faut 2 equipes");
+        System.out.println("Quelle est le lieu du match ?");
+        String buf = sc.nextLine();
+        buf = nomStade;
+
+        while(listeEquipeSelec.size() <= 2){
+            System.out.println(" ");
+            System.out.println("1.Cree une Equipe");
+            System.out.println("2.Chosiser parmis des equipes existante");
+            int selecE = sc.nextInt();
+
+            if(selecE == 1){
+                creerEquipe(listeJ, listeA, listeE, compteurEquipe, sc);
+            }
+            else if(selecE == 2){
+                if(ListeE.isEmpty()){
+                    System.out.println("La liste des equipe est vide");
+                }
+                else if(listeE.size() == listeEquipeSelec.size()){
+                    System.out.println("il n'y a plus d'equipe a selectionner, vous devez en cree une");
+                }
+                else{
+                    while(i < listeEquipeSelec.size()){
+                        if(){
+                            
+                        }
+                    }
+                }
+            }
+            
+
+        }
+        return ListM;
     }
 
     public static ArrayList<Equipe> creerEquipe(ArrayList listeJ, ArrayList listeA, ArrayList listeE, int compteurEquipe, Scanner sc){
