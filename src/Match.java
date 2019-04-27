@@ -6,14 +6,14 @@ import com.sun.tools.javac.util.List;
 
 public class Match {
 
-  public String equipe1;
-  public String equipe2;
+  private List<Joueur> listeJoueurs;
+  private List<Joueur> listeArbitre;
   public int scoreEquipe1;
   public int scoreEquipe2;
   public int val = 0;
   public String arbitre;
   public String lieuStade;
-
+  public int nbE,nbA;
   private List<Equipe> ListeEquipe;
 
   /**  public Vector  myArbitre;
@@ -27,12 +27,14 @@ public class Match {
     public Vector  joue;
     public Vector  concerne;*/
 
-  public Match(int time ,List<Equipe> ListeEquipe, Liste<Arbitre> ListeArbitre, String nstade){
+  public Match(int time ,List<Equipe> ListeEquipe, Liste<Arbitre> ListeArbitre, String nstade,int nbrEquipe,int nbrArbitre){
     this.dureeMatch = time;
-    this.ListeEquipe = equipe1;
-    this.ListeEquipe = equipe2;
-    this.ListeArbitre = arbitre;
+    this.ListeEquipe = listeJoueurs;
+    this.ListeArbitre = ListeArbitre;
     this.nstade = lieuStade;
+    this.nbE = nbrEquipe;
+    this.nbA = nbrArbitre;
+
   }
   public Integer addScoreEquipe1() {
   return null;
@@ -44,6 +46,23 @@ public class Match {
 
   public List<Equipe> getEquipe(){
     return ListeEquipe;
+  }
+
+
+  @Override
+  public String toString() {
+    return super.toString("La duree du match est de %s L'equipe selectioner est %s et l'arbitre est %s",this.dureeMatch);
+  }
+
+  public void printEquipe() {
+    for (int i = 0; i < nbE; i++) {
+        System.out.println(ListeEquipe.get(i));
+    }
+  }
+  public void printArbitre() {
+    for (int i = 0; i < nbA; i++) {
+        System.out.println(listeArbitre.get(i));
+    }
   }
 
   public void setEquipe1(List<Equipe> listeEquipe) {

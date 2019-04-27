@@ -36,7 +36,7 @@ public class Tournoi {
                     compteurEquipe++;
                 break;
                 case 4:
-                    listeMatch = creerMatch();
+                    listeMatch = creerMatch(listeEquipe,listeArbitre,listeMatch,sc);
                 break;
                 case 5:
                     choixAffichage(listeCompet, listeJoueur, listeArbitre, listeEntrainneur, listeEquipe, listeMatch, sc);
@@ -130,13 +130,17 @@ public class Tournoi {
         ArrayList listeEquipeSelec = new ArrayList();
         ArrayList listeArbitreSelec = new ArrayList();
         String nomStade;
-        int bufInt, time = 90;
+        int bufInt;
         boolean verifE = true;
         boolean verifA =true;
+        System.out.println(" ");
         System.out.println("On vas cree un match pour cela il nous faut 2 equipes");
         System.out.println("Quelle est le lieu du match ?");
         String buf = sc.nextLine();
         buf = nomStade;
+
+        System.out.println("Quelle a été la duree du match ?");
+        int time = sc.nextInt();
 
         while(listeEquipeSelec.size() <= 2){
             System.out.println(" ");
@@ -233,9 +237,10 @@ public class Tournoi {
 
             }
         }
-        Match match = new Match(time,listeEquipeSelec,listeArbitreSelec, nomStade);
+        Match match = new Match(time, listeEquipeSelec, listeArbitreSelec, nomStade, listeArbitreSelec.size(), listeEquipeSelec.size());
         System.out.println(match);
         match.printEquipe();
+        match.printArbitre();
         listeM.add(match);
         //afficherListe(listeMacthSelec);
         return ListM;
