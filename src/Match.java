@@ -8,8 +8,8 @@ public class Match {
 
   private List<Joueur> listeJoueurs;
   private List<Joueur> listeArbitre;
-  public int scoreEquipe1;
-  public int scoreEquipe2;
+  public int scoreEquipe1 = 0;
+  public int scoreEquipe2 = 0;
   public int val = 0;
   public String arbitre;
   public String lieuStade;
@@ -27,22 +27,25 @@ public class Match {
     public Vector  joue;
     public Vector  concerne;*/
 
-  public Match(int time ,List<Equipe> ListeEquipe, Liste<Arbitre> ListeArbitre, String nstade,int nbrEquipe,int nbrArbitre){
+  public Match(int time, int score1, int score2, List<Equipe> ListeEquipe, Liste<Arbitre> ListeArbitre, String nstade,int nbrEquipe,int nbrArbitre){
     this.dureeMatch = time;
-    this.ListeEquipe = listeJoueurs;
+    this.ListeEquipe = ListeEquipe;
+    this.score1 = scoreEquipe1;
+    this.score2 = scoreEquipe2; 
     this.ListeArbitre = ListeArbitre;
     this.nstade = lieuStade;
     this.nbE = nbrEquipe;
     this.nbA = nbrArbitre;
 
   }
-  public Integer addScoreEquipe1() {
-  return null;
+  /*public Integer addScoreEquipe1(int score) {
+    scoreEquipe1 += score;
+    
   }
 
   public Integer addScoreEquipe2() {
-  return null;
-  }
+    scoreEquipe2 += score;
+  }*/
 
   public List<Equipe> getEquipe(){
     return ListeEquipe;
@@ -51,7 +54,7 @@ public class Match {
 
   @Override
   public String toString() {
-    return super.toString("La duree du match est de %s L'equipe selectioner est %s et l'arbitre est %s",this.dureeMatch);
+    return super.toString("La duree du match est de %s , Le score Final est de %s : %s,",this.dureeMatch,this.ListeEquipe[0],this.scoreEquipe1,this.ListeEquipe[1],this.scoreEquipe2);
   }
 
   public void printEquipe() {
@@ -64,6 +67,7 @@ public class Match {
         System.out.println(listeArbitre.get(i));
     }
   }
+
 
   public void setEquipe1(List<Equipe> listeEquipe) {
     equipe1 = listeEquipe;

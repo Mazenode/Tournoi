@@ -130,7 +130,7 @@ public class Tournoi {
         ArrayList listeEquipeSelec = new ArrayList();
         ArrayList listeArbitreSelec = new ArrayList();
         String nomStade;
-        int bufInt;
+        int bufInt,scoreEq1,scoreEq2;
         boolean verifE = true;
         boolean verifA =true;
         System.out.println(" ");
@@ -178,7 +178,7 @@ public class Tournoi {
                     if (verifE == true) {
                         System.out.println(" ");
                         System.out.println("Entrez le nom de l'equipe que vous souhaitez ajouter au match : ");
-                        afficherJoueur(listE);
+                        afficherEquipe(listE);
                         selecE = sc.nextInt()-1;
                         sc.nextLine();
                         listeEquipeSelec.add(listE.get(selecE));
@@ -188,56 +188,65 @@ public class Tournoi {
                 
                 }
             }
-            while(listeArbitreSelec.size() < 1){
-                System.out.println(" ");
-                System.out.println("1.Cree un arbitre");
-                System.out.println("2.Choisir un arbitre deja existant");
-                int selecA = sc.nextInt();
-                int e = 0;
-
-                if(selecA == 1){
-                    creerArbitre(nom, prenom, age, nationnalite, listeA, sc);
-                    listeArbitreSelec.add(listA.get(listA.size() - 1));
-                    System.out.println("l'Arbitre est ajouté !");
-                }
-    
-                else if (selecA == 2){
-                    if(ListA.isEmpty()){
-                        System.out.println("La liste des Arbitres est vide");
-                    }
-                    else if(listA.size() == listeArbitreSelec.size()){
-                        System.out.println("il n'y a plus d'Arbitre a selectionner, vous devez en cree une");
-                    }
-                    else{
-                        while(i < listeArbitreSelec.size()){
-                            if(listeA.get(selecA)==listeArbitreSelec.get(i)){
-                                System.out.println("Cette Arbitre à déja été séléctionné !");
-                                verifA = false;
-                                afficherListe(listeJoueurSelec);
-                                i = listeArbitreSelec.size();
-                            }
-                            else {
-                                i = listeArbitreSelec.size();
-                                verifA = true;
-                            }
-                        }
-                        if (verifA == true) {
-                            System.out.println(" ");
-                            System.out.println("Entrez le nom de l'Arbitre que vous souhaitez ajouter au match : ");
-                            afficherJoueur(listeA);
-                            selecA = sc.nextInt()-1;
-                            sc.nextLine();
-                            listeArbitreSelec.add(listeA.get(selecA));
-                            System.out.println("Arbitre ajouté !");
-                            afficherListe(listeArbitreSelec);
-                        }
-                    
-                    }
-                }
-
-            }
         }
-        Match match = new Match(time, listeEquipeSelec, listeArbitreSelec, nomStade, listeArbitreSelec.size(), listeEquipeSelec.size());
+        while(listeArbitreSelec.size() < 1){
+            System.out.println(" ");
+            System.out.println("1.Cree un arbitre");
+            System.out.println("2.Choisir un arbitre deja existant");
+            int selecA = sc.nextInt();
+            int e = 0;
+
+            if(selecA == 1){
+                creerArbitre(nom, prenom, age, nationnalite, listeA, sc);
+                listeArbitreSelec.add(listA.get(listA.size() - 1));
+                System.out.println("l'Arbitre est ajouté !");
+            }
+    
+            else if (selecA == 2){
+                if(ListA.isEmpty()){
+                    System.out.println("La liste des Arbitres est vides");
+                }
+                else if(listA.size() == listeArbitreSelec.size()){
+                    System.out.println("il n'y a plus d'Arbitre a selectionner, vous devez en cree une");
+                }
+                else{
+                    while(i < listeArbitreSelec.size()){
+                        if(listeA.get(selecA)==listeArbitreSelec.get(i)){
+                            System.out.println("Cette Arbitre à déja été séléctionné !");
+                            verifA = false;
+                            afficherListe(listeJoueurSelec);
+                            i = listeArbitreSelec.size();
+                        }
+                        else {
+                            i = listeArbitreSelec.size();
+                            verifA = true;
+                        }
+                    }
+                    if (verifA == true) {
+                        System.out.println(" ");
+                        System.out.println("Entrez le nom de l'Arbitre que vous souhaitez ajouter au match : ");
+                        afficherArbitre(listeA);
+                        selecA = sc.nextInt()-1;
+                        sc.nextLine();
+                        listeArbitreSelec.add(listeA.get(selecA));
+                        System.out.println("Arbitre ajouté !");
+                        afficherListe(listeArbitreSelec);
+                    }
+                    
+                }
+            }
+
+        }
+        System.out.println("Quelle est le score de l'equipe 1 ?");
+        scoreEq1 = sc.nextInt();
+
+        System.out.println(" ");
+        System.out.println("Quelle est le score de l'equipe 2 ?");
+        scoreEq2 = sc.nextInt();
+
+
+        
+        Match match = new Match(time, scoreEq1, scoreEq2, listeEquipeSelec, listeArbitreSelec, nomStade, listeArbitreSelec.size(), listeEquipeSelec.size());
         System.out.println(match);
         match.printEquipe();
         match.printArbitre();
