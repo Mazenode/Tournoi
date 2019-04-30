@@ -47,10 +47,6 @@ public class Match {
     scoreEquipe2 += score;
   }*/
 
-  public List<Equipe> getEquipe(){
-    return ListeEquipe;
-  }
-
 
   @Override
   public String toString() {
@@ -69,29 +65,12 @@ public class Match {
   }
 
 
-  public void setEquipe1(List<Equipe> listeEquipe) {
-    equipe1 = listeEquipe;
-    val++;
-  }
-
-  public void setEquipe2(String n) {
-    equipe2 = n;
-    val++;
+  public void getEquipe(List<Equipe> listeEquipe) {
+    return listeEquipe;
   }
 
   public void getArbitre(String n) {
     arbitre = n;
-    val++;
   }
-
-  public void isMatch(){
-    if(val == 3){
-      addScoreEquipe1();
-      addScoreEquipe2();
-  }
-  else{
-    System.out.println("Impossible de lancer le match il lui manque une composante");
-  }
-}
 
 }
