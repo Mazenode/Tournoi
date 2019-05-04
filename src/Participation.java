@@ -4,15 +4,18 @@ package tournoi;
 
 public class Participation {
 
-  public boolean cartonR;
-  public boolean cartonJ;
+  public int cartonR;
+  public int cartonJ;
 
   public int nbButs;
-  public int nbArrets;
+  public int note;
 
-  public Participation(){
+  private Match listeEquipe;
 
+  public Participation(int but, int note, int cartonJa, int cartonRo){
+    this.nbButs = but;
+    this.note = note;
+    this.cartonR = cartonRo;
+    this.cartonJ = cartonJa;
   }
-
-
 }

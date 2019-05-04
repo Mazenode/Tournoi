@@ -11,6 +11,7 @@ public class Match {
   public int scoreEquipe1 = 0;
   public int scoreEquipe2 = 0;
   public int val = 0;
+  public int dureeMatch;
   public String arbitre;
   public String lieuStade;
   public int nbE,nbA;
@@ -18,7 +19,7 @@ public class Match {
 
 
 
-  public Match(int time, int score1, int score2, List<Equipe> ListeEquipe, Liste<Arbitre> ListeArbitre, String nstade,int nbrEquipe,int nbrArbitre){
+  public Match(int time, int score1, int score2, List<Equipe> ListeEquipe, Liste<Arbitre> ListeArbitre, String nstade, int nbrEquipe, int nbrArbitre){
     this.dureeMatch = time;
     this.ListeEquipe = ListeEquipe;
     this.score1 = scoreEquipe1;
@@ -27,7 +28,6 @@ public class Match {
     this.nstade = lieuStade;
     this.nbE = nbrEquipe;
     this.nbA = nbrArbitre;
-
   }
 
   @Override
@@ -44,14 +44,13 @@ public class Match {
         System.out.println(listeArbitre.get(0));
   }
   
-
-
   public void getEquipe(List<Equipe> listeEquipe) {
     return listeEquipe;
   }
 
-  public void getArbitre(String n) {
-    arbitre = n;
+  public void getArbitre() {
+    return listeArbitre;
   }
+
 
 }
