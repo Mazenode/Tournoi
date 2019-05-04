@@ -185,7 +185,7 @@ public class Tournoi {
                         System.out.println("Joueur ajouté !");
                         afficherListe(listeEquipeSelec);
                     }
-                
+
                 }
             }
         }
@@ -201,7 +201,7 @@ public class Tournoi {
                 listeArbitreSelec.add(listA.get(listA.size() - 1));
                 System.out.println("l'Arbitre est ajouté !");
             }
-    
+
             else if (selecA == 2){
                 if(ListA.isEmpty()){
                     System.out.println("La liste des Arbitres est vides");
@@ -232,7 +232,7 @@ public class Tournoi {
                         System.out.println("Arbitre ajouté !");
                         afficherListe(listeArbitreSelec);
                     }
-                    
+
                 }
             }
 
@@ -245,7 +245,7 @@ public class Tournoi {
         scoreEq2 = sc.nextInt();
 
 
-        
+
         Match match = new Match(time, scoreEq1, scoreEq2, listeEquipeSelec, listeArbitreSelec, nomStade, listeArbitreSelec.size(), listeEquipeSelec.size());
         System.out.println(match);
         match.printEquipe();

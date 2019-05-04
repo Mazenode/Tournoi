@@ -31,7 +31,7 @@ public class Match {
     this.dureeMatch = time;
     this.ListeEquipe = ListeEquipe;
     this.score1 = scoreEquipe1;
-    this.score2 = scoreEquipe2; 
+    this.score2 = scoreEquipe2;
     this.ListeArbitre = ListeArbitre;
     this.nstade = lieuStade;
     this.nbE = nbrEquipe;
@@ -40,7 +40,7 @@ public class Match {
   }
   /*public Integer addScoreEquipe1(int score) {
     scoreEquipe1 += score;
-    
+
   }
 
   public Integer addScoreEquipe2() {
@@ -63,6 +63,7 @@ public class Match {
         System.out.println(listeArbitre.get(i));
     }
   }
+  
 
 
   public void getEquipe(List<Equipe> listeEquipe) {
