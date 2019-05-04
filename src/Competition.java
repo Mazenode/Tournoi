@@ -1,6 +1,5 @@
 package tournoi;
 
-//import java.util.Vector;
 
 public class Competition {
 
@@ -9,12 +8,8 @@ public class Competition {
   public int nbEquipes;
   public String lieu;
 
-  /*
-  public Vector  myEquipe;
-  public Vector  composition;
-  */
-  
 
+  
   public void setNomCompetition(String pNom) {
        nom = pNom;
   }

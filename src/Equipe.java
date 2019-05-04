@@ -45,13 +45,6 @@ public class Equipe {
           System.out.println(listeJoueurs.get(i));
       }
   }
-  /* public Vector  myEntrainneur;
-   public Vector  myEntrainneur;
-   public Vector  myMatch;
-   public Vector  myCompetition;
-   public Vector  signe;
-   public Vector  myCompetition;
-   public Vector  joue;
-   public Vector  signe;*/
+ 
   
 }

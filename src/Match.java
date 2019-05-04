@@ -16,16 +16,7 @@ public class Match {
   public int nbE,nbA;
   private List<Equipe> ListeEquipe;
 
-  /**  public Vector  myArbitre;
-    public Vector  myParticipation;
-    public Vector  myParticipation;
-    public Vector  myParticipation;
-    public Vector  myParticipation;
-    public Vector  myParticipation;
-    public Vector  myEquipe;
-    public Competition composition;
-    public Vector  joue;
-    public Vector  concerne;*/
+
 
   public Match(int time, int score1, int score2, List<Equipe> ListeEquipe, Liste<Arbitre> ListeArbitre, String nstade,int nbrEquipe,int nbrArbitre){
     this.dureeMatch = time;
@@ -38,15 +29,6 @@ public class Match {
     this.nbA = nbrArbitre;
 
   }
-  /*public Integer addScoreEquipe1(int score) {
-    scoreEquipe1 += score;
-
-  }
-
-  public Integer addScoreEquipe2() {
-    scoreEquipe2 += score;
-  }*/
-
 
   @Override
   public String toString() {

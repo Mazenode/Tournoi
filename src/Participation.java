@@ -9,14 +9,10 @@ public class Participation {
 
   public int nbButs;
   public int nbArrets;
-  public int possession;
 
-   /** public Vector  myMatch;
-    public Vector  myMatch;
-    public Vector  myMatch;
-    public Vector  myMatch;
-    public Vector  myMatch;
-    public Joueur concerne;
-    public Match concerne;*/
+  public Participation(){
+
+  }
+
 
 }
