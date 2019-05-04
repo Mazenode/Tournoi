@@ -41,9 +41,7 @@ public class Match {
     }
   }
   public void printArbitre() {
-    for (int i = 0; i < nbA; i++) {
-        System.out.println(listeArbitre.get(i));
-    }
+        System.out.println(listeArbitre.get(0));
   }
   
 

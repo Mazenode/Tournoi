@@ -11,13 +11,15 @@ public class Equipe {
   int chx, nbJ;
   private List<Joueur> listeJoueurs;
   private Joueur j;
+  private List<Entraineur> listeEntraineurs;
   
-  public Equipe(String nom, /*int num,*/ String v, String p, List<Joueur> listeJoueurs, int choix, int nbJoueurs){
+  public Equipe(String nom, /*int num,*/ String v, String p, List<Joueur> listeJoueurs, int choix, int nbJoueurs, List<Entrainneur> listeEntraineurs){
       this.nomEquipe = nom;
       //this.numEquipe = num;
       this.ville = v;
       this.pays = p;
       this.listeJoueurs = listeJoueurs;
+      this.listeEntraineurs = listeEntraineurs;
       this.chx = choix;
       this.nbJ = nbJoueurs;
   }
@@ -26,9 +28,13 @@ public class Equipe {
       return listeJoueurs;
   }
 
+  public List<Entrainneur> getEntraineur(){
+      return listeEntraineurs;
+  }
+
   @Override
   public String toString() {
-        return String.format("Nom de l'équipe: %s; Ville: %s; Pays: %s; Tacique: %s; Joueurs :",this.nomEquipe, this.ville, this.pays, this.tactique[chx-1]);
+        return String.format("Nom de l'équipe: %s; Entraineur: %s; Ville: %s; Pays: %s; Tacique: %s; Joueurs :",this.nomEquipe, this.listeEntraineurs[0], this.ville, this.pays, this.tactique[chx-1]);
    } 
   
   public Joueur getJoueur(Joueur joueur) {
@@ -45,6 +51,10 @@ public class Equipe {
           System.out.println(listeJoueurs.get(i));
       }
   }
+
+  public void printEntraineu() {
+        System.out.println(listeEntraineurs.get(0));
+}
  
   
 }
