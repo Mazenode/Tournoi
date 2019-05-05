@@ -13,5 +13,9 @@ public class Personne {
       this.age = a;
       this.nationnalite = nat;
   }
+  
+  public Personne(){
+      
+  }
 }
 

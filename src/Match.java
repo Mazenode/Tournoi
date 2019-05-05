@@ -1,13 +1,13 @@
 package tournoi;
 
-import com.sun.tools.javac.util.List;
+import java.util.*;
 
 //import java.util.Vector;
 
 public class Match {
 
   private List<Joueur> listeJoueurs;
-  private List<Joueur> listeArbitre;
+  private List<Arbitre> listeArbitre;
   public int scoreEquipe1 = 0;
   public int scoreEquipe2 = 0;
   public int val = 0;
@@ -19,21 +19,21 @@ public class Match {
 
 
 
-  public Match(int time, int score1, int score2, List<Equipe> ListeEquipe, Liste<Arbitre> ListeArbitre, String nstade, int nbrEquipe, int nbrArbitre){
-    this.dureeMatch = time;
-    this.ListeEquipe = ListeEquipe;
-    this.score1 = scoreEquipe1;
-    this.score2 = scoreEquipe2;
-    this.ListeArbitre = ListeArbitre;
-    this.nstade = lieuStade;
-    this.nbE = nbrEquipe;
-    this.nbA = nbrArbitre;
+  public Match(int time, int score1, int score2, List<Equipe> ListeEq, List<Arbitre> ListeAr, String nstade, int nbE, int nbA){
+    dureeMatch = time;
+    ListeEquipe = ListeEq;
+    scoreEquipe2 = score2;
+    scoreEquipe1 = score1;
+    listeArbitre = ListeAr;
+    nstade = lieuStade;
+    this.nbE = nbE;
+    this.nbA = nbA;
   }
 
-  @Override
+  /*@Override
   public String toString() {
-    return super.toString("La duree du match est de %s , Le score Final est de %s : %s,",this.dureeMatch,this.ListeEquipe[0],this.scoreEquipe1,this.ListeEquipe[1],this.scoreEquipe2);
-  }
+    return toString("La duree du match est de %s , Le score Final est de %s : %s",dureeMatch, this.ListeEquipe.get(0),this.scoreEquipe1,this.scoreEquipe2);
+  }*/
 
   public void printEquipe() {
     for (int i = 0; i < nbE; i++) {
@@ -44,13 +44,11 @@ public class Match {
         System.out.println(listeArbitre.get(0));
   }
   
-  public void getEquipe(List<Equipe> listeEquipe) {
+  public List<Equipe> getEquipe(List<Equipe> listeEquipe) {
     return listeEquipe;
   }
 
-  public void getArbitre() {
-    return listeArbitre;
+  public List<Arbitre> Match(List<Arbitre> listeArbitre) {
+    return this.listeArbitre;
   }
-
-
 }

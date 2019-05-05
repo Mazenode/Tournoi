@@ -32,11 +32,11 @@ public class Tournoi {
                     creerPersonne(listeJoueur, listeArbitre, listeEntrainneur, sc, 0);
                 break;
                 case 3:
-                    listeEquipe = creerEquipe(listeJoueur, listeArbitre, listeEntrainneur, compteurEquipe, sc);
+                    listeEquipe = creerEquipe(listeJoueur, listeArbitre, listeEntrainneur, listeEquipe, compteurEquipe, sc);
                     compteurEquipe++;
                 break;
                 case 4:
-                    listeMatch = creerMatch(listeEquipe,listeArbitre,listeMatch,sc);
+                    listeMatch = creerMatch(listeEquipe,compteurEquipe,listeEquipe,listeArbitre,listeJoueur,listeMatch,sc);
                 break;
                 case 5:
                     choixAffichage(listeCompet, listeJoueur, listeArbitre, listeEntrainneur, listeEquipe, listeMatch, sc);
@@ -126,10 +126,10 @@ public class Tournoi {
         listeE.add(entrainneur);
     }
 
-    public static ArrayList<Equipe> creerMatch(ArrayList listE, ArrayList listA , ArrayList ListM, Scanner sc){
+    public static ArrayList<Match> creerMatch(ArrayList<Entrainneur> listeE, int compteurEquipe, ArrayList<Equipe> listeEq, ArrayList<Arbitre> listeA, ArrayList<Joueur> listeJ, ArrayList<Match> listeM, Scanner sc){
         ArrayList listeEquipeSelec = new ArrayList();
         ArrayList listeArbitreSelec = new ArrayList();
-        String nomStade;
+        String nomStade = null;
         int bufInt,scoreEq1,scoreEq2;
         boolean verifE = true;
         boolean verifA =true;
@@ -148,26 +148,27 @@ public class Tournoi {
             System.out.println("2.Chosiser parmis des equipes existante");
             int selecE = sc.nextInt();
             int i = 0;
+            int e = 0;
 
             if(selecE == 1){
-                creerEquipe(listeJ, listeA, listeE, compteurEquipe, sc);
+                creerEquipe(listeJ, listeA, listeE,listeEq, compteurEquipe, sc);
                 listeEquipeSelec.add(listeE.get(listeE.size() - 1));
                 System.out.println("l'Equipe ajouté !");
             }
 
             else if (selecE == 2){
-                if(ListE.isEmpty()){
+                if(listeE.isEmpty()){
                     System.out.println("La liste des equipe est vide");
                 }
-                else if(listE.size() == listeEquipeSelec.size()){
+                else if(listeE.size() == listeEquipeSelec.size()){
                     System.out.println("il n'y a plus d'equipe a selectionner, vous devez en cree une");
                 }
                 else{
                     while(i < listeEquipeSelec.size()){
-                        if(listE.get(selecE)==listeEquipeSelec.get(i)){
+                        if(listeE.get(selecE)==listeEquipeSelec.get(i)){
                             System.out.println("Cette equipe à déja été séléctionné !");
                             verifE = false;
-                            afficherListe(listeJoueurSelec);
+                            afficherListe(listeEquipeSelec);
                             i = listeEquipeSelec.size();
                         }
                         else {
@@ -178,10 +179,10 @@ public class Tournoi {
                     if (verifE == true) {
                         System.out.println(" ");
                         System.out.println("Entrez le nom de l'equipe que vous souhaitez ajouter au match : ");
-                        afficherEquipe(listE);
+                        afficherEquipe(listeE);
                         selecE = sc.nextInt()-1;
                         sc.nextLine();
-                        listeEquipeSelec.add(listE.get(selecE));
+                        listeEquipeSelec.add(listeE.get(selecE));
                         System.out.println("Joueur ajouté !");
                         afficherListe(listeEquipeSelec);
                     }
@@ -197,28 +198,28 @@ public class Tournoi {
             int e = 0;
 
             if(selecA == 1){
-                creerArbitre(nom, prenom, age, nationnalite, listeA, sc);
-                listeArbitreSelec.add(listA.get(listA.size() - 1));
+                creerPersonne(listeJ, listeA, listeE, sc, 1);
+                listeArbitreSelec.add(listeA.get(listeA.size() - 1));
                 System.out.println("l'Arbitre est ajouté !");
             }
 
             else if (selecA == 2){
-                if(ListA.isEmpty()){
+                if(listeA.isEmpty()){
                     System.out.println("La liste des Arbitres est vides");
                 }
-                else if(listA.size() == listeArbitreSelec.size()){
+                else if(listeA.size() == listeArbitreSelec.size()){
                     System.out.println("il n'y a plus d'Arbitre a selectionner, vous devez en cree une");
                 }
                 else{
-                    while(i < listeArbitreSelec.size()){
-                        if(listeA.get(selecA)==listeArbitreSelec.get(i)){
+                    while(e < listeArbitreSelec.size()){
+                        if(listeA.get(selecA)==listeArbitreSelec.get(e)){
                             System.out.println("Cette Arbitre à déja été séléctionné !");
                             verifA = false;
-                            afficherListe(listeJoueurSelec);
-                            i = listeArbitreSelec.size();
+                            afficherListe(listeArbitreSelec);
+                            e = listeArbitreSelec.size();
                         }
                         else {
-                            i = listeArbitreSelec.size();
+                            e = listeArbitreSelec.size();
                             verifA = true;
                         }
                     }
@@ -252,28 +253,35 @@ public class Tournoi {
         match.printArbitre();
         listeM.add(match);
         //afficherListe(listeMacthSelec);
-        return ListM;
+        return listeM;
     }
 
-    public static ArrayList<Equipe> creerEquipe(ArrayList listeJ, ArrayList listeA, ArrayList listeE, int compteurEquipe, Scanner sc){
+    public static ArrayList<Equipe> creerEquipe(ArrayList<Joueur> listeJ, ArrayList<Arbitre> listeA, ArrayList<Entrainneur> listeE, ArrayList<Equipe> listeEq, int compteurEquipe, Scanner sc){
         ArrayList listeJoueurSelec = new ArrayList();
         ArrayList listeEntraineurSelec = new ArrayList();
         String buf, nom, ville, pays;
-        int bufInt, choix = 0;
-        int selecJ = 0;int selecE = 0;
+        int bufInt,num, choix = 0;
+        int selecJ = 0;
+        int selecE = 0;
         boolean verif = true;
         System.out.println("On va créer une équipe (l'équipe doit comporter au minimum 3 joueurs et au maximum 24 joueurs.");
 
         System.out.println("Choisissez le nom de l'équipe n°"+compteurEquipe+" : ");
         buf = sc.nextLine();
         nom = buf;
-
+        
+        System.out.println("Combien de joueur voulez vous mettre dans votre equipe ?");
+        bufInt = sc.nextInt();
+        num = bufInt;
+        
+        
         System.out.println("Renseignez le nom de la ville :");
-        buf = sc.nextLine();
+        buf = sc.next();
+                
         ville = buf;
 
         System.out.println("Renseignez le nom du pays :");
-        buf = sc.nextLine();
+        buf = sc.next();
         pays = buf;
 
         System.out.println("Renseignez la tactique par défaut de l'équipe :");
@@ -287,7 +295,7 @@ public class Tournoi {
         choix = sc.nextInt();
         sc.nextLine();
 
-        while(listeJoueurSelec.size() < 2) {
+        while(listeJoueurSelec.size() < num) {
             System.out.println(" ");
             System.out.println("1. Ajouter un joueur existant");
             System.out.println("2. Créer un joueur puis l'ajouter à l'équipe");
@@ -304,7 +312,7 @@ public class Tournoi {
                 }
                 else {
                     while (i < listeJoueurSelec.size()) {
-                    if (listeJ.get(selec)==listeJoueurSelec.get(i)){
+                    if (listeJ.get(selecJ)==listeJoueurSelec.get(i)){
                         System.out.println("Ce joueur à déja été séléctionné !");
                         verif = false;
                         afficherListe(listeJoueurSelec);
@@ -319,9 +327,10 @@ public class Tournoi {
                     System.out.println(" ");
                     System.out.println("Entrez le numéro du joueur que vous souhaitez ajouter à l'équipe : ");
                     afficherJoueur(listeJ);
-                    selec = sc.nextInt()-1;
+                    selecJ = sc.nextInt()-1;
                     sc.nextLine();
                     listeJoueurSelec.add(listeJ.get(selecJ));
+                    System.out.println(listeJ.get(0));  
                     System.out.println("Joueur ajouté !");
                     afficherListe(listeJoueurSelec);
                 }
@@ -330,7 +339,10 @@ public class Tournoi {
             else if (selecJ == 2) {
                 creerPersonne(listeJ, listeA, listeE, sc, 1);
                 //On ajoute le dernier élément de la liste de joueurs, celui que l'on vient de créer
+                Joueur temp = new Joueur();
+                temp = listeJ.get(listeJ.size() - 1);
                 listeJoueurSelec.add(listeJ.get(listeJ.size() - 1));
+                System.out.println(listeJ.get(listeJ.size() - 1).nomEquipe = nom);
                 System.out.println("Joueur ajouté !");
             }
         }
@@ -343,23 +355,23 @@ public class Tournoi {
 
             if (selecE == 1) {
                 //Gestion des collisions dans le liste de joueurs sélectionnés
-                int i = 0;
+                int e = 0;
                 if (listeE.isEmpty()){
-                    System.out.println("La liste des Joueurs est vide !");
+                    System.out.println("La liste des Entraineur est vide !");
                 }
                 else if (listeE.size() == listeEntraineurSelec.size()){
-                    System.out.println("Il n'y a plus de joueurs disponnibles, vous devez impérativement en créer un !");
+                    System.out.println("Il n'y a plus d'Entraineur disponnibles, vous devez impérativement en créer un !");
                 }
                 else {
-                    while (i < listeEntraineurSelec.size()) {
-                    if (listeE.get(selec)==listeEntraineurSelec.get(i)){
+                    while (e < listeEntraineurSelec.size()) {
+                    if (listeE.get(selecE)==listeEntraineurSelec.get(e)){
                         System.out.println("Ce joueur à déja été séléctionné !");
                         verif = false;
                         afficherListe(listeEntraineurSelec);
-                        i = listeEntraineurSelec.size();
+                        e = listeEntraineurSelec.size();
                     }
                     else {
-                        i = listeEntraineurSelec.size();
+                        e = listeEntraineurSelec.size();
                         verif = true;
                     }
                 }
@@ -367,7 +379,7 @@ public class Tournoi {
                     System.out.println(" ");
                     System.out.println("Entrez le numéro de l'entraineur que vous souhaitez ajouter à l'équipe : ");
                     afficherJoueur(listeE);
-                    selec = sc.nextInt()-1;
+                    selecE = sc.nextInt()-1;
                     sc.nextLine();
                     listeEntraineurSelec.add(listeE.get(selecE));
                     System.out.println("Entraineur ajouté !");
@@ -375,24 +387,24 @@ public class Tournoi {
                 }
                 }
             }
-            else if (selec == 2) {
-                creerPersonne(listeJ, listeA, listeE, sc, 1);
+            else if (selecE == 2) {
+                creerPersonne(listeJ, listeA, listeE, sc, 3);
                 //On ajoute le dernier élément de la liste de joueurs, celui que l'on vient de créer
                 listeEntraineurSelec.add(listeE.get(listeE.size() - 1));
                 System.out.println("Entraineur ajouté !");
             }
         }
 
-        Equipe equipe = new Equipe(nom, ville, pays, listeJoueurSelec, choix, listeJoueurSelec.size(),listeEntraineurSelec);
+        Equipe equipe = new Equipe(nom, ville, pays, listeJoueurSelec, choix, listeJoueurSelec.size(),listeEntraineurSelec.size(),listeEntraineurSelec);
         System.out.println(equipe);
-        equipe.printJoueurs();
-        equipe.printEntraineur();
-        listeE.add(equipe);
-        //afficherListe(listeJoueurSelec);
-        return listeE;
+        //equipe.printJoueurs();
+        //equipe.printEntraineur();
+        listeEq.add(equipe);
+        //afficherListe(listeJoueurSelec); la aussi
+        return listeEq;
     }
 
-    public static ArrayList<Competition> creerCompetition(ArrayList listeC, ArrayList listeJ, ArrayList listeA, ArrayList listeE, int compteurEquipe, ArrayList listeEq, Scanner sc){
+    public static ArrayList<Competition> creerCompetition(ArrayList<Competition> listeC, ArrayList listeJ, ArrayList listeA, ArrayList listeE, int compteurEquipe, ArrayList listeEq, Scanner sc){
         int choix = sc.nextInt();
         boolean verif = true;
         sc.nextLine();
@@ -432,7 +444,7 @@ public class Tournoi {
 
             }
             else if (choix == 2) {
-                creerEquipe(listeJ, listeA, listeE, compteurEquipe, sc);
+                creerEquipe(listeJ, listeA, listeE, listeEq, compteurEquipe, sc);
                 //On ajoute le dernier élément de la liste de joueurs, celui que l'on vient de créer
                 listeEquipeSelec.add(listeEq.get(listeEq.size() - 1));
                 System.out.println("Equipe ajoutée !");
