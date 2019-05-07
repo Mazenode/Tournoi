@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Match {
 
-  private List<Joueur> listeJoueurs;
+  
   private List<Arbitre> listeArbitre;
   public int scoreEquipe1 = 0;
   public int scoreEquipe2 = 0;
@@ -15,7 +15,7 @@ public class Match {
   public String arbitre;
   public String lieuStade;
   public int nbE,nbA;
-  private List<Equipe> ListeEquipe;
+  public List<Equipe> ListeEquipe;
 
 
 

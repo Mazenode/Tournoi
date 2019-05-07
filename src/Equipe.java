@@ -8,7 +8,7 @@ public class Equipe {
   String ville;
   String pays;
   String [] tactique = {"4-4-2 à plat", "4-4-2 en losange", "4-2-3-1", "4-3-3", "3-5-2", "3-4-3"};
-  int chx, nbJ,nbE;
+  int chx, nbJ,nbE,victoire=0,defaite=0,nul=0,but=0;
   private List<Joueur> listeJoueurs;
   private Joueur j;
   private List<Entrainneur> listeEntraineurs;
@@ -24,6 +24,10 @@ public class Equipe {
       this.nbJ = nbJoueurs;
       this.nbE = nbEntraineur;
   }
+  public Equipe(){
+    
+   }
+
   
   public List<Joueur> getJoueur() {
       return listeJoueurs;
@@ -57,16 +61,39 @@ public class Equipe {
         for (int e = 0; e < nbE; e++) {
           System.out.println(listeEntraineurs.get(e));
       }
+    }
+  // ajout des scores/victoire/defaite
+  public void addScore(int b){
+      but += b;
+  }
+  public int getScore(){
+    return but;
+  }
+  //Victoire
+  public void addVictoire(int v){
+      victoire += v;
+  }
+  
+  public int getVictoire(){
+      return victoire;
+  }
+  
+  //Defaite
+  public void addDefaite(int d){
+      defaite += d;
+  }
+  public int getDefaite(){
+      return defaite;
+  }
+  
+  //Nul
+  public void addNul(int n){
+      nul += n;
+  }
+ 
+  public int getNul(){
+      return nul;
+  }
 }
-   public Equipe(){
-       this.nomEquipe = null;
-      //this.numEquipe = num;
-      this.ville = null;
-      this.pays = null;
-      this.listeJoueurs = null;
-      this.listeEntraineurs = null;
-      this.chx = 0;
-      this.nbJ = 0;
-      this.nbE = 0;
-   }
-}
+  
+   

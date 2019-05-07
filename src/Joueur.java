@@ -6,9 +6,10 @@ public class Joueur extends Personne {
   public int chx;
   public String nomEquipe;
   
-  public Joueur(String n, String p, int a, String nat, int choix){
+  public Joueur(String n, String p, int a, String nat,String Jeq, int choix){
       super(n,p,a,nat);      
       this.chx = choix;
+      nomEquipe = Jeq;
   }
   
   public Joueur(){
