@@ -1,4 +1,3 @@
-package tournoi;
 
 import java.util.*;
 
@@ -7,11 +6,11 @@ public class Equipe {
   String nomEquipe;
   String ville;
   String pays;
-  String [] tactique = {"4-4-2 à plat", "4-4-2 en losange", "4-2-3-1", "4-3-3", "3-5-2", "3-4-3"};
   int chx, nbJ,nbE,victoire=0,defaite=0,nul=0,but=0;
   private List<Joueur> listeJoueurs;
   private Joueur j;
   private List<Entrainneur> listeEntraineurs;
+  private String tactique;
   
   public Equipe(String nom, /*int num,*/ String v, String p, List<Joueur> listeJoueurs, int choix, int nbJoueurs,int nbEntraineur, List<Entrainneur> listeEntraineurs){
       this.nomEquipe = nom;
@@ -23,6 +22,7 @@ public class Equipe {
       this.chx = choix;
       this.nbJ = nbJoueurs;
       this.nbE = nbEntraineur;
+      this.tactique = tactique;
   }
   public Equipe(){
     
@@ -39,7 +39,7 @@ public class Equipe {
 
   @Override
   public String toString() {
-        return String.format("Nom de l'équipe: %s; Entraineur: %s; Ville: %s; Pays: %s; Tacique: %s; Joueurs :",this.nomEquipe, this.listeEntraineurs.get(0), this.ville, this.pays, this.tactique[chx-1]);
+        return String.format("Nom de l'�quipe: %s; Entraineur: %s; Ville: %s; Pays: %s; Tacique: %s; Joueurs :",this.nomEquipe, this.listeEntraineurs.get(0), this.ville, this.pays, this.tactique);
    } 
   
   public Joueur getJoueur(Joueur joueur) {

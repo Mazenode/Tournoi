@@ -1,5 +1,3 @@
-package tournoi;
-
 
 public class Competition {
 

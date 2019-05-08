@@ -1,5 +1,3 @@
-package tournoi;
-
 //import java.util.Vector;
 
 public class Entrainneur /*extends Personne */{
@@ -10,7 +8,7 @@ public class Entrainneur /*extends Personne */{
   private String nationnalite;
   public String nomEquipe;
 
-  public Entrainneur(String n, String p, int a, String EnEq, String nat){
+  public Entrainneur(String n, String p, int a, String nat, String EnEq){
       nom = n;
       prenom = p;
       age = a;
@@ -22,6 +20,19 @@ public class Entrainneur /*extends Personne */{
 }
   @Override
   public String toString() {
-        return String.format("Nom: %s; Prénom: %s; Age: %d; Nationnalité: Equipe entrainner: %s; ",nom, prenom, age, nationnalite,nomEquipe);
+        return String.format("Nom: %s; Prénom: %s; Age: %d; Nationnalité: %s; Equipe entrainner: %s; ",nom, prenom, age, nationnalite,nomEquipe);
    }
+  
+  public String getnom() {
+      return nom;
+  }
+  public String getprenom() {
+      return prenom;
+  }
+  public int getage() {
+      return age;
+  }
+  public String getnationnalite() {
+      return nationnalite;
+  }
 }

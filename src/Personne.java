@@ -1,4 +1,4 @@
-package tournoi;
+
 
 public class Personne {
 
